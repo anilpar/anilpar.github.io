@@ -1,0 +1,13 @@
+{
+    "welcome": "Welcome {{ user_name }}!",
+    "posts": [
+        {
+            "title": "About us",
+            "body": "Get bilingual resources for the IT support in Japan. We offer IT remote support, ServiceNow support services in Japan"
+        },
+        {
+            "title": "ServiceNow Resources for Japan",
+            "body": "For all clients, who are already using ServiceNow or who have decided to use ServiceNow, Fidel offers: Administration and Configuration, Support & Ongoing maintenance, New customization, integration and development"
+        }
+    ]
+}

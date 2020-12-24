@@ -1,0 +1,13 @@
+{
+    "welcome": "Bienvenue {{ user_name }}!",
+    "posts": [
+        {
+            "title": "À propos de nous",
+            "body": "Obtenez des ressources bilingues pour le support informatique au Japon. Nous offrons une assistance informatique à distance, des services d'assistance ServiceNow au Japon"
+        },
+        {
+            "title": "Ressources ServiceNow pour le Japon",
+            "body": "Pour tous les clients, qui utilisent déjà ServiceNow ou qui ont décidé d'utiliser ServiceNow, Fidel propose: Administration et Configuration, Support & Maintenance continue, Nouvelle personnalisation, intégration et développement"
+        }
+    ]
+}
