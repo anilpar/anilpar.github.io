@@ -1,0 +1,112 @@
+/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+
+.flex-v-fullscreen{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.nav-bar{
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: $fidle-blue;    
+    width: 100%;
+}
+
+.navbar-holder{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    margin: 0px auto;
+    z-index: 100;
+    padding: 0px;
+    flex: 0;
+}
+
+.profile-name{
+    border-radius: 50%;
+    margin-right: 30px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+
+.profile-box{
+    position: absolute;
+    background-color: #fefefe;
+    width: 150px;
+    right: 10px;
+    top: 60px;
+    z-index: 10;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.16);
+    border-radius: 10px;
+}
+ 
+.router-content{
+    padding-top: 60px;
+    flex: 1;
+}
+
+.footer{
+    padding: 10px 10px; 
+    background-color: $fidle-blue;    
+    width: 100%;
+    color: white;
+    text-align: center;
+    flex: 0;
+    position: fixed;
+    bottom: 0px;
+}
+
+.form-grid{
+    display:grid;
+    grid-gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+.span-col{
+    grid-column: 1/-1;
+}
+.grid-2{
+    grid-template-columns: 1fr 1fr;
+}
+
+.popup-container{
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    padding: 0px 20px;
+    margin: 60px auto;
+}
+
+.form-heading{
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 15px 50px;
+}
+
+.close-btn{
+    padding: 6px 3px;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 29px;
+    text-align: center;
+    position: absolute;
+    font-size: 17px;
+    line-height: 1;
+    border-radius: 50%;
+    background-color: var(--danger);
+    color: #fff;
+}
+
+.close-btn:hover{
+    text-decoration: none;
+    color: #fff;
+}

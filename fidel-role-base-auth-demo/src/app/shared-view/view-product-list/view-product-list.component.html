@@ -1,0 +1,9 @@
+<div class="grid-list">
+    <div class="card mb-4 shadow" *ngFor="let item of product_list">
+        <img class="card-img-top" src="{{item.thumbnailUrl}}" alt="Card image cap">
+        <div class="card-body">
+            <p>ID: {{item.id }}</p>
+            <h5>{{ item.title | titlecase }} </h5>
+        </div>
+    </div>
+</div>

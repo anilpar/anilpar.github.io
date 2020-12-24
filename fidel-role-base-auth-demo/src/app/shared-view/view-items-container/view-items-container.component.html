@@ -1,0 +1,18 @@
+<div>
+    <div *ngIf="view == 'posts' ">
+        <h4>Posts</h4>
+        <app-view-post-list></app-view-post-list>
+    </div>
+    <div *ngIf="view == 'products' ">
+        <h4>Products</h4>
+        <app-view-product-list></app-view-product-list>
+    </div>
+    <div *ngIf="view == 'users' ">
+        <h4>Users</h4>
+        <app-view-user-list></app-view-user-list>
+    </div>
+    <div *ngIf="view == 'profile'">
+        <h4>Profile</h4>
+        <app-view-profile></app-view-profile>
+    </div>
+</div>

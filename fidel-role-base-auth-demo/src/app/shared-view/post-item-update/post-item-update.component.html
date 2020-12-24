@@ -1,0 +1,19 @@
+<div class="update-form mx-auto shadow">
+    <a role="button" class="close-btn" (click)="handleCancel()"> X </a>
+
+    <h5 class="form-heading">
+        Add New Post
+    </h5>
+    <form class="form-grid d-block" [formGroup]="updateForm">
+
+        <input type="text" class="form-control" placeholder="Name" formControlName="title">
+        <textarea name="post_body" class="form-control my-2" cols="30" rows="5" formControlName="post_body"></textarea>
+
+        <div class="span-col text-center mt-4">
+            <button class="btn btn-primary mx-2" (click)="reset()">Reset</button>
+
+            <button class="btn btn-success mx-2" (click)="updateDetails()">Submit</button>
+        </div>
+
+    </form>
+</div>

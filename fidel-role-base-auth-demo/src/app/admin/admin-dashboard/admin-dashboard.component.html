@@ -1,0 +1,63 @@
+<div>
+    <div class="box-container">
+        <div class="box shadow">
+            <h5>Number of Users</h5>
+            <p class="digit"> {{ dashboard_data?.users?.length }} </p>
+            <button class="btn btn-primary my-1" (click)="create_user()">Create User</button>
+        </div>
+        <div class="box shadow mx-2">
+            <h5>Number of Products</h5>
+            <p class="digit"> {{ dashboard_data?.products?.length }} </p>
+            <button class="btn btn-primary my-1" (click)="create_product()">Create Products</button>
+        </div>
+        <div class="box shadow">
+            <h5>Number of Posts</h5>
+            <p class="digit"> {{ dashboard_data?.posts?.length }}</p>
+            <button class="btn btn-primary my-1" (click)="create_post()">Create Posts</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="mb-2">Latest Post</h4>
+            <div class="scroll-container">
+                <!-- <app-posts-view [config]='admin_post_config'></app-posts-view> -->
+                <app-view-post-list [config]='admin_post_config'></app-view-post-list>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Graph</h4>
+            <div class="box box-2 bg-white shadow">
+                <div style="display: block;">
+                    <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                        [options]="pieChartOptions" [plugins]="pieChartPlugins" [legend]="pieChartLegend">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="popup-container" *ngIf="popup == 'create-user' ">
+        <app-user-item-update (userEvent)="handleUserEvent($event)"></app-user-item-update>
+    </div>
+
+
+    <div class="popup-container" *ngIf="popup == 'create-product' ">
+
+        <app-product-item-update (userEvent)="handleUserEvent($event)" [userItemToEdit]="userItemToEdit">
+        </app-product-item-update>
+    </div>
+
+    <div class="popup-container" *ngIf="popup == 'create-post' ">
+        <app-post-item-update (userEvent)="handleUserEvent($event)" [userItemToEdit]="userItemToEdit">
+        </app-post-item-update>
+    </div>
+
+
+
+
+</div>

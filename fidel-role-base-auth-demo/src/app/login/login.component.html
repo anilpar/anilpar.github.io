@@ -1,0 +1,12 @@
+<div class="bg-image">
+    <div class="login-box mx-auto shadow" (keydown.enter)="processLogin()">
+        <input type="text" class="form-control" placeholder="Enter username" [(ngModel)]="username">
+
+        <input type="password" class="form-control my-2" placeholder="Enter password" [(ngModel)]="password">
+
+        <div class="text-center mt-4">
+            <!-- <button class="btn btn-primary mx-2" (click)="reset()">Reset</button> -->
+            <button class="btn btn-primary mx-2" (click)="processLogin()">LOGIN</button>
+        </div>
+    </div>
+</div>

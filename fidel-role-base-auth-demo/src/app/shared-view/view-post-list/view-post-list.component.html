@@ -1,0 +1,9 @@
+<div class="card mb-4 shadow" *ngFor="let post of post_list">
+    <div class="card-header bg-danger ">
+        <h5 class="m-0">{{ post.title | titlecase }} </h5>
+        <button class="btn btn-warning" *ngIf="setting.is_show_translate">Translate</button>
+    </div>
+    <div class="card-body">
+        <p>{{ post.body | titlecase }}</p>
+    </div>
+</div>

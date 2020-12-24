@@ -1,0 +1,24 @@
+<div class="update-form mx-auto shadow">
+    <a role="button" class="close-btn" (click)="handleCancel()"> X </a>
+    <h5 class="form-heading">
+        Add New User
+    </h5>
+    <form class="form-grid grid-2" [formGroup]="updateForm">
+
+        <input type="text" class="form-control" placeholder="Name" formControlName="fullname">
+        <input type="text" class="form-control" placeholder="Username" formControlName="username">
+        <input type="text" class="form-control" placeholder="Email" formControlName="email">
+        <input type="text" class="form-control" placeholder="Address" formControlName="address">
+        <input type="text" class="form-control" placeholder="Phone" formControlName="phone">
+        <input type="text" class="form-control" placeholder="Website" formControlName="website">
+        <input type="text" class="form-control" placeholder="Company" formControlName="company">
+        <input type="text" class="form-control" placeholder="Country" formControlName="country">
+
+        <div class="span-col text-center mt-4">
+            <button class="btn btn-primary mx-2" (click)="reset()">Reset</button>
+
+            <button class="btn btn-success mx-2" (click)="updateDetails()">Submit</button>
+        </div>
+
+    </form>
+</div>

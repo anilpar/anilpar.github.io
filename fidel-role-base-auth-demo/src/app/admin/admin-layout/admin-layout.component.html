@@ -1,0 +1,42 @@
+<div class="flex-v-fullscreen">
+    <div class="container-fluid navbar-holder">
+        <div class="nav nav-bar shadow">
+            <div class="mr-2">
+                <a [routerLink]="['/admin/Dashboard']" role="button" class="btn bg-light mr-1"
+                    rel="noopener noreferrer">Dashboard</a>
+                <a [routerLink]="['/admin/view/users']" role="button" class="btn bg-light mx-1">Users</a>
+                <a [routerLink]="['/admin/view/posts']" role="button" class="btn bg-light mx-1">Posts</a>
+                <a [routerLink]="['/admin/view/products']" role="button" class="btn bg-light mx-1">Products</a>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="text-white mr-3 text-center">
+                    <p class="m-0">{{ user_name }} </p>
+                    <p class="m-0" style="font-size: 12px;">({{ user_role | titlecase }})</p>
+                </div>
+
+                <a href="javascript:void(0)" role="button" class="border p-2 profile-name bg-white"
+                    (click)="toggle_profile_box()">
+                    AP
+                </a>
+            </div>
+
+            <div class="p-4 profile-box " *ngIf="is_profile_show">
+                <a href="/admin/profile" role="button" class="d-block mb-1">View profile</a>
+                <a href="javascript:void(0)" role="button" class="d-block mb-1" (click)="logout()">Logout</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid router-content bg-light">
+        <div class="p-4">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0">
+        <div class="footer">
+            Copyright 2021
+        </div>
+    </div>
+</div>

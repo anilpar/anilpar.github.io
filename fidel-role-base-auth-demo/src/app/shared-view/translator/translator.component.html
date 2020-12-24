@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="d-flex justify-content-between mb-4 shadow p-4">
+        <h2 class="text-right"> {{ welcome_message }} </h2>
+        <div>
+            <select aria-placeholder="Choose Language" class="form-control ml-2" id="lang" [(ngModel)]="language"
+                (change)="useLanguage()">
+                <option value="en" selected>English</option>
+                <option value="ja">Japanese</option>
+                <option value="fr">French</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="card mb-4 shadow" *ngFor="let item of trans_data">
+        <div class="card-header bg-warning text-white">
+            {{ item.title }}
+        </div>
+        <div class="card-body">
+            {{ item.body }}
+        </div>
+    </div>
+
+
+</div>
