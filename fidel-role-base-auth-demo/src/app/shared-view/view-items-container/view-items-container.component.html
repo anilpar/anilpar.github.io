@@ -9,10 +9,17 @@
     </div>
     <div *ngIf="view == 'users' ">
         <h4>Users</h4>
-        <app-view-user-list></app-view-user-list>
+        <app-view-user-list (userViewEvent)="handleUserEvent($event)"></app-view-user-list>
     </div>
     <div *ngIf="view == 'profile'">
         <h4>Profile</h4>
         <app-view-profile></app-view-profile>
     </div>
+
+    <div class="popup-container" *ngIf="popup == 'edit-user'">
+        <app-user-item-update [userItemToEdit]="userItemToEdit" (userEvent)="handleEditEvent($event)">
+        </app-user-item-update>
+    </div>
+
+
 </div>

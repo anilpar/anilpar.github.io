@@ -11,3 +11,13 @@
     height: 100vh;
     padding: 1px;
 }
+
+@media screen and (max-width: 700px){
+    
+    .login-box{
+        width: auto;
+        margin: 10px auto;
+        border-radius: 5px;
+    }
+    
+}

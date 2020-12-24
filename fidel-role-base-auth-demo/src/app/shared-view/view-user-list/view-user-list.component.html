@@ -14,8 +14,8 @@
             <td>{{ item.email }}</td>
             <td> {{ item.address.city }}</td>
             <td>
-                <button class="btn btn-primary action-btn">EDIT</button>
-                <button class="btn btn-danger action-btn">DELETE</button>
+                <button class="btn btn-primary action-btn" (click)="editUser(item)">EDIT</button>
+                <button class="btn btn-danger action-btn" (click)="deleteUser(item)">DELETE</button>
             </td>
         </tr>
 

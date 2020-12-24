@@ -16,4 +16,9 @@ export class HttpService {
   post(url: string, req_body: any) {
     return this.http.post(this.apiEndPoint + url, req_body);
   }
+
+  put(url: string, req_body: any) {
+    return this.http.post(this.apiEndPoint + url, req_body);
+  }
+
 }

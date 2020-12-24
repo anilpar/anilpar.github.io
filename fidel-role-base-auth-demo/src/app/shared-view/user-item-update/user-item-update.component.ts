@@ -27,7 +27,7 @@ export class UserItemUpdateComponent implements OnInit {
       phone: new FormControl(null),
       website: new FormControl(null),
       company: new FormControl(null),
-      country: new FormControl(null),
+      //country: new FormControl(null),
     });
 
   }
@@ -36,8 +36,24 @@ export class UserItemUpdateComponent implements OnInit {
     this.localDB.data.subscribe((data) => {
       this.users_list = data['users'];
     })
+    this.fillUserDetails();
+  }
 
-    console.log(this.users_list);
+
+  fillUserDetails() {
+    if (!this.userItemToEdit) { return false }
+    this.updateForm.patchValue({
+      fullname: this.userItemToEdit.name,
+      username: this.userItemToEdit.username,
+      email: this.userItemToEdit.email,
+      address: this.userItemToEdit.address.city,
+      phone: this.userItemToEdit.phone,
+      website: this.userItemToEdit.website,
+      company: this.userItemToEdit.company.name,
+      //country: this.userItemToEdit.website,
+    })
+
+    return true;
   }
 
   reset() {
@@ -49,7 +65,7 @@ export class UserItemUpdateComponent implements OnInit {
       phone: null,
       website: null,
       company: null,
-      country: null,
+      //country: null,
     })
   }
 
@@ -64,7 +80,7 @@ export class UserItemUpdateComponent implements OnInit {
     }
 
     let reqBody = {
-      "id": '525',
+      "id": this.userItemToEdit ? this.userItemToEdit.id : '',
       "name": this.updateForm.get('fullname')?.value || '',
       "username": this.updateForm.get('username')?.value || '',
       "email": this.updateForm.get('email')?.value || '',
@@ -88,22 +104,42 @@ export class UserItemUpdateComponent implements OnInit {
     }
 
     let apiUrl = 'users';
+    let act = this.userItemToEdit ? 'edit' : 'create';
 
-    this.http.post(apiUrl, reqBody).subscribe((res) => {
-      console.log(res);
+    console.log(act);
 
-      this.users_list.push(res);
+    if (act == 'edit') {
+      this.http.put(apiUrl, reqBody).subscribe((res) => {
+        this.callback(res);
+      }, (err) => { });
 
-      // Emit to admin-dashboard
-      this.userEvent.emit({ type: 'success', data: res })
-      console.log(this.users_list);
-      this.localDB.set('users', this.users_list);
+    } else {
+      this.http.post(apiUrl, reqBody).subscribe((res) => {
+        this.callback(res);
+      }, (err) => { });
+    }
 
-    }, (err) => {
 
-    });
 
     return true;
+
+  }
+
+  callback(res: any) {
+    // Emit to admin-dashboard
+    let act = this.userItemToEdit ? 'edit' : 'create';
+    if (act == 'create') {
+      this.users_list.push(res);
+    } else if (act == 'edit') {
+      let index = this.users_list.findIndex((e: any) => {
+        return e['id'] == this.userItemToEdit.id;
+      });
+      this.users_list[index] = res;
+    }
+
+    this.userEvent.emit({ type: 'success', data: res, action: act });
+    this.localDB.set('users', this.users_list);
+    console.log(this.users_list);
 
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LocaldbService } from 'src/app/services/localdb.service';
 
 @Component({
   selector: 'app-view-items-container',
@@ -11,7 +12,10 @@ export class ViewItemsContainerComponent implements OnInit {
   avail_views = ['posts', 'products', 'users', 'profile']
   view: any = '';
 
-  constructor(private route: ActivatedRoute) { }
+  userItemToEdit: any;
+
+  constructor(private route: ActivatedRoute, private db: LocaldbService) { }
+  popup = '';
 
   ngOnInit(): void {
 
@@ -28,6 +32,36 @@ export class ViewItemsContainerComponent implements OnInit {
 
   handleUserEvent(e: any) {
     console.log(e);
+    if (e?.action == 'edit') {
+      this.userItemToEdit = e['data'];
+      this.popup = 'edit-user';
+
+    } else if (e?.action == 'delete') {
+      //this.popup = 'delete';
+      let confirm = window.confirm(`Do you want to delete user ${e['data']['name']} ?`);
+      if (confirm) {
+        let u_id = e['data']['id'];
+
+        let users_list = this.db.get('users')
+        let finals = users_list.filter((e: any) => {
+          return e['id'] !== u_id;
+        })
+
+        this.db.set('users', finals)
+
+      }
+
+    }
+
+  }
+
+  handleEditEvent(e: any) {
+    this.hidePopup()
+  }
+
+  hidePopup() {
+    this.popup = '';
+    this.userItemToEdit = null;
   }
 
 }
